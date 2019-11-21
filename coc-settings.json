@@ -1,0 +1,32 @@
+{
+	"suggest.enablePreview":true,
+	"suggest.autoTrigger": "trigger",
+	"suggest.triggerAfterInsertEnter":true,
+	"languageserver": {
+		"clangd": {
+			"command": "clangd",
+			"args": [
+				"--background-index"
+			],
+			"rootPatterns": [
+				"compile_flags.txt",
+				"compile_commands.json",
+				".vim/",
+				".git/",
+				".hg/"
+			],
+			"filetypes": [
+				"c",
+				"cpp",
+				"objc",
+				"objcpp"
+			]
+		},
+		"golang": {
+			"command": "gopls",
+			"rootPatterns": ["go.mod"],
+			"filetypes": ["go"]
+		}
+	},
+	"tsserver.tsdk":"D:/tools/vscode/Microsoft VS Code/resources/app/extensions/node_modules/typescript/lib"
+}
