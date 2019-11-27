@@ -1,4 +1,4 @@
-colorscheme evening
+set termguicolors
 nnoremap -es :edit $VIMRC<CR>
 nnoremap -s :w<CR>:source $VIMRC<CR>
 set nu 
@@ -9,6 +9,7 @@ set guifont =Courier:h15
 set ignorecase
 set cursorline
 syntax on
+set background=dark
 colorscheme solarized8
 highlight CursorLine guibg=Black
 nnoremap <S-u> :exe 'cd' wxtf<CR>
@@ -25,9 +26,10 @@ inoremap ' ''<ESC>i
 inoremap ( ()<ESC>i
 inoremap [ []<ESC>i
 inoremap { {}<ESC>i
-inoremap <c-cr> <cr><ESC>O
+inoremap <c-CR> <CR><ESC>O
 inoremap <c-d> <right>
 inoremap <s-cr> <esc>o
+inoremap <c-f> <right>
 
 
 " Specify a directory for plugins
@@ -85,7 +87,7 @@ augroup tzz
 	""autocmd FileType c,javascript,typescript nmap <buffer> <c-i> :w<CR><Plug>(coc-references)
 	""autocmd FileType c,javascript,typescript,cpp inoremap <silent><expr> <c-o> coc#refresh()
 	""autocmd FileType go inoremap  <c-o> <c-x><c-o>
-	autocmd FileType go,ts call TzzInitGoSyntax()
+	autocmd FileType go,ts,c call TzzInitGoSyntax()
 augroup end
 
 nmap -f <Plug>(coc-format)
@@ -104,3 +106,4 @@ function! TzzInitGoSyntax()
 	syntax match tzzGoComment /\/\/.*/ contains=tzzTodo 
 	highlight link tzzGoComment Comment
 endfunction
+hi Normal guibg=NONE ctermbg=NONE
