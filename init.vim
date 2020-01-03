@@ -1,15 +1,14 @@
 set termguicolors
 nnoremap -es :edit $VIMRC<CR>
 nnoremap -s :w<CR>:source $VIMRC<CR>
-set nu 
-let g:python3_host_prog = 'D:\tools\python3.7\python.exe'
-let wxtf="D:\\projects\\justGun"
+set nu
+""let g:python3_host_prog = 'D:\tools\python3.7\python.exe'
 set path+=**
-set guifont =Courier:h15
+set guifont =Courier:h20
 set ignorecase
 set cursorline
 syntax on
-set background=dark
+""set background=dark
 colorscheme solarized8
 highlight CursorLine guibg=Black
 nnoremap <S-u> :exe 'cd' wxtf<CR>
@@ -26,10 +25,13 @@ inoremap ' ''<ESC>i
 inoremap ( ()<ESC>i
 inoremap [ []<ESC>i
 inoremap { {}<ESC>i
-inoremap <c-CR> <CR><ESC>O
+inoremap <c-CR> <ESC>o
 inoremap <c-d> <right>
 inoremap <s-cr> <esc>o
-inoremap <c-f> <right>
+inoremap <c-l> <right>
+inoremap <c-a> <esc>A
+nnoremap -t :tabnew<CR>:terminal<CR>
+nnoremap <s-c> caw
 
 
 " Specify a directory for plugins
@@ -75,7 +77,7 @@ call plug#end()
 let g:love2dPath='D:\projects\megasource\libs\love\src'
 let g:goPlayground ='D:\projects\goPlayground\'
 
-let list =["c","javascript","typescript","cpp","go"]
+let list =["c","javascript","typescript","cpp","go","rust"]
 
 augroup tzz
 	au!
@@ -97,6 +99,9 @@ set wildignore+=*.js
 
 command! Fmt normal gg<s-v>G=
 
+command! CocImpl normal <Plug>(coc-implementation)
+command! CocDef normal <Plug>(coc-definition)
+command! CocRef normal <Plug>(coc-references)
 
 set nowrap
 
@@ -106,4 +111,32 @@ function! TzzInitGoSyntax()
 	syntax match tzzGoComment /\/\/.*/ contains=tzzTodo 
 	highlight link tzzGoComment Comment
 endfunction
-hi Normal guibg=NONE ctermbg=NONE
+
+""hi Normal guibg=NONE ctermbg=NONE
+hi NormalFloat guifg=White
+""colorscheme solarized8
+
+function! TestEcho(param)
+	echo a:param
+endfunction
+
+let name="tzz"
+
+command! -nargs=1 TestCmd call TestEcho(<args>)
+
+
+inoremap ) <Cmd> call GetCursorChar()<Cr>
+function! GetCursorChar()
+	echo "in"
+	let index = col(".")
+	let l = line(".")
+	let lastChar =getline(".")[index-2]
+	if lastChar == "("
+		call cursor(l,index+1)
+	else
+		exec 'normal! i)'
+		call cursor(l,index+1)
+	endif
+endfunction
+
+	

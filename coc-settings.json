@@ -28,5 +28,5 @@
 			"filetypes": ["go"]
 		}
 	},
-	"tsserver.tsdk":"D:/tools/vscode/Microsoft VS Code/resources/app/extensions/node_modules/typescript/lib"
+	//"tsserver.tsdk":"D:/tools/vscode/Microsoft VS Code/resources/app/extensions/node_modules/typescript/lib"
 }
