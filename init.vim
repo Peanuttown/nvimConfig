@@ -9,7 +9,7 @@ set ignorecase
 set cursorline
 syntax on
 ""set background=dark
-colorscheme solarized8
+colorscheme desert
 highlight CursorLine guibg=Black
 nnoremap <S-u> :exe 'cd' wxtf<CR>
 nnoremap <S-e> :NERDTreeToggle<CR>
@@ -31,6 +31,7 @@ inoremap <c-l> <right>
 inoremap <c-a> <esc>A
 nnoremap -t :tabnew<CR>:terminal<CR>
 nnoremap <s-c> caw
+set wildignorecase
 
 
 set runtimepath +=~/.vim/tzzNvimPlug
@@ -128,5 +129,6 @@ command! -nargs=1 TestCmd call TestEcho(<args>)
 
 inoremap ) <Cmd> call GetCursorChar()<Cr>
 nnoremap -n :NERDTree<Cr>
+nnoremap -c :call TzzcdFile()<Cr>
 
 	
