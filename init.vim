@@ -15,7 +15,6 @@ nnoremap <S-u> :exe 'cd' wxtf<CR>
 nnoremap <S-e> :NERDTreeToggle<CR>
 inoremap -n <c-\><c-n>
 
-noremap -c caw
 noremap <Plug>(TzzTest) :echo "haha"<CR>
 nmap tzz <Plug>(TzzTest)
 "inoremap <c-o> <c-x><c-o>
@@ -33,6 +32,8 @@ inoremap <c-a> <esc>A
 nnoremap -t :tabnew<CR>:terminal<CR>
 nnoremap <s-c> caw
 
+
+set runtimepath +=~/.vim/tzzNvimPlug
 
 " Specify a directory for plugins
 " " - For Neovim: ~/.local/share/nvim/plugged
@@ -126,17 +127,6 @@ command! -nargs=1 TestCmd call TestEcho(<args>)
 
 
 inoremap ) <Cmd> call GetCursorChar()<Cr>
-function! GetCursorChar()
-	echo "in"
-	let index = col(".")
-	let l = line(".")
-	let lastChar =getline(".")[index-2]
-	if lastChar == "("
-		call cursor(l,index+1)
-	else
-		exec 'normal! i)'
-		call cursor(l,index+1)
-	endif
-endfunction
+nnoremap -n :NERDTree<Cr>
 
 	
