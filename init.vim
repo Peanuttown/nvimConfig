@@ -19,22 +19,22 @@ noremap <Plug>(TzzTest) :echo "haha"<CR>
 nmap tzz <Plug>(TzzTest)
 "inoremap <c-o> <c-x><c-o>
 inoremap " ""<ESC>i
-inoremap < <><ESC>i
 inoremap ' ''<ESC>i
+inoremap <c-j> <Esc>
 inoremap ( ()<ESC>i
 inoremap [ []<ESC>i
 inoremap { {}<ESC>i
-inoremap <c-CR> <ESC>o
 inoremap <c-d> <right>
-inoremap <s-cr> <esc>o
+inoremap <s-cr> <Cr><esc>O
 inoremap <c-l> <right>
 inoremap <c-a> <esc>A
+inoremap <c-b> <Cr><esc>O
 nnoremap -t :tabnew<CR>:terminal<CR>
 nnoremap <s-c> caw
 set wildignorecase
 
 
-set runtimepath +=~/.vim/tzzNvimPlug
+set runtimepath +=~/.vim/tzzNvimPlugin
 
 " Specify a directory for plugins
 " " - For Neovim: ~/.local/share/nvim/plugged
@@ -114,7 +114,7 @@ function! TzzInitGoSyntax()
 	highlight link tzzGoComment Comment
 endfunction
 
-""hi Normal guibg=NONE ctermbg=NONE
+hi Normal guibg=NONE ctermbg=NONE
 hi NormalFloat guifg=White
 ""colorscheme solarized8
 

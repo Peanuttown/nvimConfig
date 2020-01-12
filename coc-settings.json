@@ -4,7 +4,7 @@
 	"suggest.triggerAfterInsertEnter":true,
 	"languageserver": {
 		"clangd": {
-			"command": "clangd",
+			"command": "clangd-8",
 			"args": [
 				"--background-index"
 			],
