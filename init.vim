@@ -1,8 +1,9 @@
 set termguicolors
 nnoremap -es :edit $VIMRC<CR>
 nnoremap -s :w<CR>:source $VIMRC<CR>
+
 set nu
-""let g:python3_host_prog = 'D:\tools\python3.7\python.exe'
+"let g:python3_host_prog = 'D:\tools\python3.7\python.exe'
 set path+=**
 set guifont =Courier:h20
 set ignorecase
@@ -14,23 +15,24 @@ highlight CursorLine guibg=Black
 nnoremap <S-u> :exe 'cd' wxtf<CR>
 nnoremap <S-e> :NERDTreeToggle<CR>
 inoremap -n <c-\><c-n>
-
 noremap <Plug>(TzzTest) :echo "haha"<CR>
 nmap tzz <Plug>(TzzTest)
 "inoremap <c-o> <c-x><c-o>
 inoremap " ""<ESC>i
 inoremap ' ''<ESC>i
-inoremap <c-j> <Esc>
+inoremap <c-j> <esc>
 inoremap ( ()<ESC>i
 inoremap [ []<ESC>i
 inoremap { {}<ESC>i
 inoremap <c-d> <right>
-inoremap <s-cr> <Cr><esc>O
 inoremap <c-l> <right>
 inoremap <c-a> <esc>A
 inoremap <c-b> <Cr><esc>O
 nnoremap -t :tabnew<CR>:terminal<CR>
 nnoremap <s-c> caw
+nnoremap <c-s> :update <cr>
+inoremap <c-i> <cr><esc>O
+
 set wildignorecase
 
 
@@ -45,6 +47,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'joshdick/onedark.vim'
 
 Plug 'leafgarland/typescript-vim'
 
@@ -85,7 +88,7 @@ augroup tzz
 	au!
 	""autocmd FileType c,javascript,typescript,cpp nmap <buffer> <c-]> :w<CR><Plug>(coc-definition)
 	exec "autocmd FileType " . join(list,",") . " inoremap <silent><expr> <c-o> coc#refresh()" 
-	exec "autocmd FileType " . join(list,",") . " nmap <buffer> <c-]> :w<CR><Plug>(coc-definition)" 
+	exec "autocmd FileType " . join(list,",") . " nmap <buffer> <c-]> :up<CR><Plug>(coc-definition)" 
 	exec "autocmd FileType " . join(list,",") . " nmap <buffer> <c-n> <Plug>(coc-diagnostic-next)" 
 	exec "autocmd FileType " . join(list,",") . " nmap <buffer> <s-f> <Plug>(coc-diagnostic-info)" 
 	""autocmd FileType c,javascript,typescript nmap <buffer> <c-i> :w<CR><Plug>(coc-references)
@@ -114,12 +117,13 @@ function! TzzInitGoSyntax()
 	highlight link tzzGoComment Comment
 endfunction
 
-hi Normal guibg=NONE ctermbg=NONE
+hi Normal guibg=NONEctermbg=NONE
 hi NormalFloat guifg=White
 ""colorscheme solarized8
 
 function! TestEcho(param)
-	echo a:param
+	echom a:param
+	return 10
 endfunction
 
 let name="tzz"
@@ -131,4 +135,7 @@ inoremap ) <Cmd> call GetCursorChar()<Cr>
 nnoremap -n :NERDTree<Cr>
 nnoremap -c :call TzzcdFile()<Cr>
 
-	
+function! Enter()
+
+
+endfunction!
