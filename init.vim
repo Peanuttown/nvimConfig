@@ -8,10 +8,12 @@ set path+=**
 set guifont =Courier:h20
 set ignorecase
 set cursorline
+set autoindent
+set expandtab
 syntax on
 ""set background=dark
 colorscheme desert
-highlight CursorLine guibg=Black
+highlight CursorLine guibg=Black 
 nnoremap <S-u> :exe 'cd' wxtf<CR>
 nnoremap <S-e> :NERDTreeToggle<CR>
 inoremap -n <c-\><c-n>
@@ -31,7 +33,7 @@ inoremap <c-b> <Cr><esc>O
 nnoremap -t :tabnew<CR>:terminal<CR>
 nnoremap <s-c> caw
 nnoremap <c-s> :update <cr>
-inoremap <c-i> <cr><esc>O
+tnoremap <c-j> <c-\><c-n>
 
 set wildignorecase
 
@@ -91,7 +93,7 @@ augroup tzz
 	exec "autocmd FileType " . join(list,",") . " nmap <buffer> <c-]> :up<CR><Plug>(coc-definition)" 
 	exec "autocmd FileType " . join(list,",") . " nmap <buffer> <c-n> <Plug>(coc-diagnostic-next)" 
 	exec "autocmd FileType " . join(list,",") . " nmap <buffer> <s-f> <Plug>(coc-diagnostic-info)" 
-	""autocmd FileType c,javascript,typescript nmap <buffer> <c-i> :w<CR><Plug>(coc-references)
+	exec "autocmd FileType " . join(list,",") . "  nmap <buffer> <c-h> :w<CR><Plug>(coc-references)" 
 	""autocmd FileType c,javascript,typescript,cpp inoremap <silent><expr> <c-o> coc#refresh()
 	""autocmd FileType go inoremap  <c-o> <c-x><c-o>
 	autocmd FileType go,ts,c call TzzInitGoSyntax()
@@ -100,7 +102,7 @@ augroup end
 nmap -f <Plug>(coc-format)
 command! Tzz echo 1112
 
-set wildignore+=*.js
+"set wildignore+=*.js
 
 command! Fmt normal gg<s-v>G=
 
@@ -117,8 +119,10 @@ function! TzzInitGoSyntax()
 	highlight link tzzGoComment Comment
 endfunction
 
-hi Normal guibg=NONEctermbg=NONE
+hi Normal guibg=NONE ctermbg=NONE
 hi NormalFloat guifg=White
+hi CursorIM guifg=Green  guibg=NONE
+hi lCursor guifg=Green guibg=Black
 ""colorscheme solarized8
 
 function! TestEcho(param)
@@ -136,6 +140,7 @@ nnoremap -n :NERDTree<Cr>
 nnoremap -c :call TzzcdFile()<Cr>
 
 function! Enter()
+
 
 
 endfunction!
