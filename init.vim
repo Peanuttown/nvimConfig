@@ -8,8 +8,11 @@ set path+=**
 set guifont =Courier:h20
 set ignorecase
 set cursorline
+set tabstop=4       " Tab键替换的空格长度，默认8
+set softtabstop=4   " 退格键退回缩进空格的长度
+set shiftwidth=4    " 表示每一级缩进的长度
+set expandtab       " 设置缩进用空格来表示""""
 set autoindent
-set expandtab
 syntax on
 ""set background=dark
 colorscheme desert
