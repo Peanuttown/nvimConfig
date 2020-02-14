@@ -96,7 +96,7 @@ augroup tzz
 	exec "autocmd FileType " . join(list,",") . " nmap <buffer> <c-]> :up<CR><Plug>(coc-definition)" 
 	exec "autocmd FileType " . join(list,",") . " nmap <buffer> <c-n> <Plug>(coc-diagnostic-next)" 
 	exec "autocmd FileType " . join(list,",") . " nmap <buffer> <s-f> <Plug>(coc-diagnostic-info)" 
-	exec "autocmd FileType " . join(list,",") . "  nmap <buffer> <c-h> :w<CR><Plug>(coc-references)" 
+	exec "autocmd FileType " . join(list,",") . "  nmap <buffer> <c-h> :up<CR><Plug>(coc-references)" 
 	""autocmd FileType c,javascript,typescript,cpp inoremap <silent><expr> <c-o> coc#refresh()
 	""autocmd FileType go inoremap  <c-o> <c-x><c-o>
 	autocmd FileType go,ts,c call TzzInitGoSyntax()
