@@ -1,3 +1,4 @@
+
 set termguicolors
 nnoremap -es :edit $VIMRC<CR>
 nnoremap -s :w<CR>:source $VIMRC<CR>
@@ -15,7 +16,6 @@ set expandtab       " 设置缩进用空格来表示""""
 set autoindent
 syntax on
 ""set background=dark
-colorscheme desert
 highlight CursorLine guibg=Black 
 nnoremap <S-u> :exe 'cd' wxtf<CR>
 nnoremap <S-e> :NERDTreeToggle<CR>
@@ -47,22 +47,16 @@ set runtimepath +=~/.vim/tzzNvimPlugin
 " " - For Neovim: ~/.local/share/nvim/plugged
 " " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
-
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'joshdick/onedark.vim'
-
 Plug 'leafgarland/typescript-vim'
-
-
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-
-
-"Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
+Plug 'sebdah/vim-delve'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'sebdah/vim-delve'
+Plug 'joshdick/onedark.vim'
 call plug#end()
 
 "let g:LanguageClient_autoStart = 1
@@ -104,6 +98,7 @@ augroup end
 
 nmap -f <Plug>(coc-format)
 command! Tzz echo 1112
+command! NF NERDTreeFind
 
 "set wildignore+=*.js
 
@@ -122,7 +117,6 @@ function! TzzInitGoSyntax()
 	highlight link tzzGoComment Comment
 endfunction
 
-hi Normal guibg=NONE ctermbg=NONE
 hi NormalFloat guifg=White
 hi CursorIM guifg=Green  guibg=NONE
 hi lCursor guifg=Green guibg=Black
@@ -139,11 +133,16 @@ command! -nargs=1 TestCmd call TestEcho(<args>)
 
 
 inoremap ) <Cmd> call GetCursorChar()<Cr>
-nnoremap -n :NERDTree<Cr>
+nnoremap -nn :NERDTree<Cr>
+nnoremap -nf :NERDTreeFind<Cr>
+nnoremap -nc :NERDTreeClose<Cr>
+
+
 nnoremap -c :call TzzcdFile()<Cr>
 
 function! Enter()
 
-
-
 endfunction!
+colorscheme onedark
+hi Normal guibg=NONE ctermbg=NONE
+let g:go_gopls_enabled = 0
