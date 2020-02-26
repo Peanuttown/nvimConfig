@@ -1,4 +1,3 @@
-
 set termguicolors
 nnoremap -es :edit $VIMRC<CR>
 nnoremap -s :w<CR>:source $VIMRC<CR>
@@ -107,6 +106,7 @@ command! Fmt normal gg<s-v>G=
 command! CocImpl normal <Plug>(coc-implementation)
 command! CocDef normal <Plug>(coc-definition)
 command! CocRef normal <Plug>(coc-references)
+command! CocTypeDef normal <Plug>(coc-type-definition)
 
 set nowrap
 
@@ -144,5 +144,8 @@ function! Enter()
 
 endfunction!
 colorscheme onedark
-hi Normal guibg=NONE ctermbg=NONE
+""hi Normal guibg=NONE ctermbg=NONE
 let g:go_gopls_enabled = 0
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+            \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+            \,sm:block-blinkwait175-blinkoff150-blinkon175
