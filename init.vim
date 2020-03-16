@@ -2,18 +2,19 @@ set termguicolors
 nnoremap -es :edit $VIMRC<CR>
 nnoremap -s :w<CR>:source $VIMRC<CR>
 
+let mapleader="-"
 set nu
 "let g:python3_host_prog = 'D:\tools\python3.7\python.exe'
 set path+=**
 set guifont =Courier:h20
 set ignorecase
+let g:EasyMotion_smartcase = 1
 set cursorline
 set tabstop=4       " Tab键替换的空格长度，默认8
 set softtabstop=4   " 退格键退回缩进空格的长度
 set shiftwidth=4    " 表示每一级缩进的长度
 set expandtab       " 设置缩进用空格来表示""""
 set autoindent
-syntax on
 ""set background=dark
 highlight CursorLine guibg=Black 
 nnoremap <S-u> :exe 'cd' wxtf<CR>
@@ -56,6 +57,9 @@ Plug 'sebdah/vim-delve'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'sebdah/vim-delve'
 Plug 'joshdick/onedark.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'easymotion/vim-easymotion'
+
 call plug#end()
 
 "let g:LanguageClient_autoStart = 1
@@ -95,7 +99,7 @@ augroup tzz
 	autocmd FileType go,ts,c call TzzInitGoSyntax()
 augroup end
 
-nmap -f <Plug>(coc-format)
+""nmap -f <Plug>(coc-format)
 command! Tzz echo 1112
 command! NF NERDTreeFind
 
@@ -118,9 +122,8 @@ function! TzzInitGoSyntax()
 endfunction
 
 hi NormalFloat guifg=White
-hi CursorIM guifg=Green  guibg=NONE
+""hi CursorIM guifg=Green  guibg=NONE
 hi lCursor guifg=Green guibg=Black
-""colorscheme solarized8
 
 function! TestEcho(param)
 	echom a:param
@@ -143,9 +146,19 @@ nnoremap -c :call TzzcdFile()<Cr>
 function! Enter()
 
 endfunction!
-colorscheme onedark
 ""hi Normal guibg=NONE ctermbg=NONE
 let g:go_gopls_enabled = 0
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
             \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
             \,sm:block-blinkwait175-blinkoff150-blinkon175
+highlight Comment guifg=Red
+inoremap <c-n> <c-x><c-n>
+inoremap <c-p> <c-x><c-p>
+
+syntax enable
+colorscheme desert
+nnoremap -w :up<cr>
+inoremap -a <esc>A
+nnoremap <s-u> :b#<cr>
+nmap <Leader>t <Plug>(easymotion-s2)
+
