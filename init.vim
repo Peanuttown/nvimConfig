@@ -52,9 +52,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'sebdah/vim-delve'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'sebdah/vim-delve'
+""Plug 'sebdah/vim-delve'
+""Plug 'fatih/vim-go', 
+""Plug 'sebdah/vim-delve'
 Plug 'joshdick/onedark.vim'
 call plug#end()
 
@@ -144,7 +144,8 @@ function! Enter()
 
 endfunction!
 colorscheme onedark
-""hi Normal guibg=NONE ctermbg=NONE
+hi Normal guibg=NONE ctermbg=NONE
+hi Comment guifg=Red
 let g:go_gopls_enabled = 0
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
             \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
