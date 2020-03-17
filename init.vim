@@ -146,13 +146,10 @@ nnoremap -c :call TzzcdFile()<Cr>
 function! Enter()
 
 endfunction!
-<<<<<<< HEAD
 colorscheme onedark
 hi Normal guibg=NONE ctermbg=NONE
 hi Comment guifg=Red
-=======
 ""hi Normal guibg=NONE ctermbg=NONE
->>>>>>> ba95abbcba028234584726388566975b7bae25b4
 let g:go_gopls_enabled = 0
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
             \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
