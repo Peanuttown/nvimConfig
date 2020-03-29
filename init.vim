@@ -160,5 +160,5 @@ colorscheme desert
 nnoremap -w :up<cr>
 inoremap -a <esc>A
 nnoremap <s-u> :b#<cr>
-nmap <Leader>t <Plug>(easymotion-s2)
+nmap <Leader>g <Plug>(easymotion-s2)
 
