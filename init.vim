@@ -53,9 +53,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'sebdah/vim-delve'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'sebdah/vim-delve'
+""Plug 'sebdah/vim-delve'
+""Plug 'fatih/vim-go', 
+""Plug 'sebdah/vim-delve'
 Plug 'joshdick/onedark.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'easymotion/vim-easymotion'
@@ -146,6 +146,9 @@ nnoremap -c :call TzzcdFile()<Cr>
 function! Enter()
 
 endfunction!
+colorscheme onedark
+hi Normal guibg=NONE ctermbg=NONE
+hi Comment guifg=Red
 ""hi Normal guibg=NONE ctermbg=NONE
 let g:go_gopls_enabled = 0
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
