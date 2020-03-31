@@ -1,6 +1,7 @@
-set termguicolors
+set termguicolors 
 nnoremap -es :edit $VIMRC<CR>
-nnoremap -s :w<CR>:source $VIMRC<CR>
+nnoremap -ees :w<CR>:source $VIMRC<CR>
+nnoremap -s caw
 
 let mapleader="-"
 set nu
@@ -9,6 +10,7 @@ set path+=**
 set guifont =Courier:h20
 set ignorecase
 let g:EasyMotion_smartcase = 1
+set smartcase
 set cursorline
 set tabstop=4       " Tab键替换的空格长度，默认8
 set softtabstop=4   " 退格键退回缩进空格的长度
@@ -146,7 +148,6 @@ nnoremap -c :call TzzcdFile()<Cr>
 function! Enter()
 
 endfunction!
-colorscheme onedark
 hi Normal guibg=NONE ctermbg=NONE
 hi Comment guifg=Red
 ""hi Normal guibg=NONE ctermbg=NONE
@@ -159,9 +160,13 @@ inoremap <c-n> <c-x><c-n>
 inoremap <c-p> <c-x><c-p>
 
 syntax enable
-colorscheme desert
+colorscheme onedark
 nnoremap -w :up<cr>
 inoremap -a <esc>A
 nnoremap <s-u> :b#<cr>
-nmap <Leader>t <Plug>(easymotion-s2)
+nnoremap <s-b> :Buffers<cr>
+nnoremap -f :Files<cr>
+nnoremap -vs :vs<cr> <c-w>l
+nnoremap -q :q<cr>
+nmap <Leader>g <Plug>(easymotion-s2)
 
