@@ -61,6 +61,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'joshdick/onedark.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'easymotion/vim-easymotion'
+Plug 'neovim/nvim-lsp'
 
 call plug#end()
 
@@ -88,11 +89,13 @@ let g:goPlayground ='D:\projects\goPlayground\'
 
 let list =["c","javascript","typescript","cpp","go","rust"]
 
+
 augroup tzz
 	au!
 	""autocmd FileType c,javascript,typescript,cpp nmap <buffer> <c-]> :w<CR><Plug>(coc-definition)
 	exec "autocmd FileType " . join(list,",") . " inoremap <silent><expr> <c-o> coc#refresh()" 
-	exec "autocmd FileType " . join(list,",") . " nmap <buffer> <c-]> :up<CR><Plug>(coc-definition)" 
+	""exec "autocmd FileType " . join(list,",") . " nmap <buffer> <c-]> :up<CR><Plug>(coc-definition)" 
+	exec "autocmd FileType " . join(list,",") . " nmap <buffer> <c-]> :up<CR><Plug>(tzz-go-to-definition)" 
 	exec "autocmd FileType " . join(list,",") . " nmap <buffer> <c-n> <Plug>(coc-diagnostic-next)" 
 	exec "autocmd FileType " . join(list,",") . " nmap <buffer> <s-f> <Plug>(coc-diagnostic-info)" 
 	exec "autocmd FileType " . join(list,",") . "  nmap <buffer> <c-h> :up<CR><Plug>(coc-references)" 
@@ -100,6 +103,18 @@ augroup tzz
 	""autocmd FileType go inoremap  <c-o> <c-x><c-o>
 	autocmd FileType go,ts,c call TzzInitGoSyntax()
 augroup end
+
+""g_tzz_lsp_nvim = true
+""if (g_tzz_lsp_nvim)
+""end
+""
+""if g_tzz_lsp_nvim
+""    nmap <Plug>(tzz-go-to-definition) <Plug>(coc-definition)<CR>
+""else 
+""
+""endif
+
+nmap <Plug>(tzz-go-to-definition) <Plug>(coc-definition)<CR>
 
 ""nmap -f <Plug>(coc-format)
 command! Tzz echo 1112
@@ -127,12 +142,7 @@ hi NormalFloat guifg=White
 ""hi CursorIM guifg=Green  guibg=NONE
 hi lCursor guifg=Green guibg=Black
 
-function! TestEcho(param)
-	echom a:param
-	return 10
-endfunction
 
-let name="tzz"
 
 command! -nargs=1 TestCmd call TestEcho(<args>)
 
@@ -169,4 +179,6 @@ nnoremap -f :Files<cr>
 nnoremap -vs :vs<cr> <c-w>l
 nnoremap -q :q<cr>
 nmap <Leader>g <Plug>(easymotion-s2)
+
+call tzz#RequireLua("tzzLsp.lua")
 
