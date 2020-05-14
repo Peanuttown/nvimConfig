@@ -54,7 +54,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'leafgarland/typescript-vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+""Plug 'neoclide/coc.nvim', {'branch': 'release'}
 ""Plug 'sebdah/vim-delve'
 ""Plug 'fatih/vim-go', 
 ""Plug 'sebdah/vim-delve'
@@ -93,28 +93,45 @@ let list =["c","javascript","typescript","cpp","go","rust"]
 augroup tzz
 	au!
 	""autocmd FileType c,javascript,typescript,cpp nmap <buffer> <c-]> :w<CR><Plug>(coc-definition)
-	exec "autocmd FileType " . join(list,",") . " inoremap <silent><expr> <c-o> coc#refresh()" 
-	""exec "autocmd FileType " . join(list,",") . " nmap <buffer> <c-]> :up<CR><Plug>(coc-definition)" 
-	exec "autocmd FileType " . join(list,",") . " nmap <buffer> <c-]> :up<CR><Plug>(tzz-go-to-definition)" 
-	exec "autocmd FileType " . join(list,",") . " nmap <buffer> <c-n> <Plug>(coc-diagnostic-next)" 
+	""""exec "autocmd FileType " . join(list,",") . " inoremap <silent><expr> <c-o> coc#refresh()" 
+	exec "autocmd FileType " . join(list,",") . " nmap <buffer> <c-]> :up<CR><Plug>(tzz_go_to_definition)" 
+	exec "autocmd FileType " . join(list,",") . " nmap <buffer> <c-n> <Plug>(tzz_go_to_next_err)" 
 	exec "autocmd FileType " . join(list,",") . " nmap <buffer> <s-f> <Plug>(coc-diagnostic-info)" 
-	exec "autocmd FileType " . join(list,",") . "  nmap <buffer> <c-h> :up<CR><Plug>(coc-references)" 
+	exec "autocmd FileType " . join(list,",") . "  nmap <buffer> <c-h> :up<CR><Plug>(tzz_find_references)" 
 	""autocmd FileType c,javascript,typescript,cpp inoremap <silent><expr> <c-o> coc#refresh()
 	""autocmd FileType go inoremap  <c-o> <c-x><c-o>
 	autocmd FileType go,ts,c call TzzInitGoSyntax()
 augroup end
 
-""g_tzz_lsp_nvim = true
-""if (g_tzz_lsp_nvim)
-""end
-""
-""if g_tzz_lsp_nvim
-""    nmap <Plug>(tzz-go-to-definition) <Plug>(coc-definition)<CR>
-""else 
-""
-""endif
+""let g:tzz_lsp_coc =1 
+if exists("g:tzz_lsp_coc")
+    augroup tzz_lsp
+        au!
+        exec "autocmd FileType " . join(list,",") . " inoremap <silent><expr> <c-o> coc#refresh()" 
+    augroup end
+    nmap <Plug>(tzz_go_to_definition) <Plug>(coc-definition)
+    nmap <Plug>(tzz_go_to_next_err) <Plug>(coc-diagnostic-next)
+    nmap <Plug>(tzz_find_references) <Plug>(coc-references)
+endif
 
-nmap <Plug>(tzz-go-to-definition) <Plug>(coc-definition)<CR>
+
+call tzz#RequireLua("tzzLsp.lua")
+lua tzz_lsp_go_setup()
+let g:tzz_lsp_nvim=1
+if exists("g:tzz_lsp_nvim")
+    augroup tzz_lsp
+        au!
+        exec "autocmd FileType " . join(list,",") . " inoremap <silent><expr> <c-o> v:lua.vim.lsp.omnifunc()" 
+    augroup end
+    nmap <Plug>(tzz_go_to_definition) <cmd>lua vim.lsp.buf.definition()<CR>
+    nmap <Plug>(tzz_go_to_next_err) <Plug>(coc-diagnostic-next)
+    nmap <Plug>(tzz_find_references) <cmd>lua vim.lsp.buf.references()<CR>
+endif
+
+
+     
+
+
 
 ""nmap -f <Plug>(coc-format)
 command! Tzz echo 1112
@@ -174,11 +191,10 @@ colorscheme onedark
 nnoremap -w :up<cr>
 inoremap -a <esc>A
 nnoremap <s-u> :b#<cr>
-nnoremap <s-b> :Buffers<cr>
+nnoremap -b :Buffers<cr>
 nnoremap -f :Files<cr>
 nnoremap -vs :vs<cr> <c-w>l
 nnoremap -q :q<cr>
 nmap <Leader>g <Plug>(easymotion-s2)
 
-call tzz#RequireLua("tzzLsp.lua")
 
