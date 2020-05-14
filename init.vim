@@ -54,7 +54,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'leafgarland/typescript-vim'
-""Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 ""Plug 'sebdah/vim-delve'
 ""Plug 'fatih/vim-go', 
 ""Plug 'sebdah/vim-delve'
@@ -103,7 +103,7 @@ augroup tzz
 	autocmd FileType go,ts,c call TzzInitGoSyntax()
 augroup end
 
-""let g:tzz_lsp_coc =1 
+let g:tzz_lsp_coc =1 
 if exists("g:tzz_lsp_coc")
     augroup tzz_lsp
         au!
@@ -115,9 +115,9 @@ if exists("g:tzz_lsp_coc")
 endif
 
 
-call tzz#RequireLua("tzzLsp.lua")
-lua tzz_lsp_go_setup()
-let g:tzz_lsp_nvim=1
+""call tzz#RequireLua("tzzLsp.lua")
+""lua tzz_lsp_go_setup()
+""let g:tzz_lsp_nvim=1
 if exists("g:tzz_lsp_nvim")
     augroup tzz_lsp
         au!
@@ -164,7 +164,8 @@ hi lCursor guifg=Green guibg=Black
 command! -nargs=1 TestCmd call TestEcho(<args>)
 
 
-inoremap ) <Cmd> call GetCursorChar()<Cr>
+inoremap ) <Cmd> call MoveIfLeftParenthese()<Cr>
+inoremap <cr> <Cmd> call TzzEnter()<Cr>
 nnoremap -nn :NERDTree<Cr>
 nnoremap -nf :NERDTreeFind<Cr>
 nnoremap -nc :NERDTreeClose<Cr>
