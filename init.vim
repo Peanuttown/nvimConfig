@@ -61,7 +61,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'joshdick/onedark.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'easymotion/vim-easymotion'
-Plug 'neovim/nvim-lsp'
+""Plug 'neovim/nvim-lsp'
 
 call plug#end()
 
@@ -197,5 +197,6 @@ nnoremap -f :Files<cr>
 nnoremap -vs :vs<cr> <c-w>l
 nnoremap -q :q<cr>
 nmap <Leader>g <Plug>(easymotion-s2)
+let g:coc_disable_startup_warning=1
 
 
