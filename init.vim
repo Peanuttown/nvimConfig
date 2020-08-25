@@ -199,4 +199,9 @@ nnoremap -q :q<cr>
 nmap <Leader>g <Plug>(easymotion-s2)
 let g:coc_disable_startup_warning=1
 
+nnoremap <m-1> :tabfirst<CR>
+nnoremap <m-2> 2gt
+nnoremap <m-3> 3gt
+
+
 
