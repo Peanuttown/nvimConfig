@@ -1,4 +1,4 @@
-set termguicolors 
+""set termguicolors 
 nnoremap -es :edit $VIMRC<CR>
 nnoremap -ees :w<CR>:source $VIMRC<CR>
 nnoremap -s caw
@@ -34,8 +34,12 @@ inoremap { {}<ESC>i
 inoremap <c-d> <right>
 inoremap <c-l> <right>
 inoremap <c-a> <esc>A
-inoremap <c-b> <Cr><esc>O
-nnoremap -t :tabnew<CR>:terminal<CR>
+inoremap <c-b> <left>
+inoremap <c-e> <esc><left>wa
+
+nnoremap -tt :tabnew<CR>:terminal<CR>
+nnoremap -tv :vs<CR>:terminal<CR>
+nnoremap -tc :terminal<CR>
 nnoremap <s-c> caw
 nnoremap <c-s> :update <cr>
 tnoremap <c-j> <c-\><c-n>
@@ -56,12 +60,13 @@ Plug 'joshdick/onedark.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 ""Plug 'sebdah/vim-delve'
-""Plug 'fatih/vim-go', 
+Plug 'fatih/vim-go', 
 ""Plug 'sebdah/vim-delve'
 Plug 'joshdick/onedark.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'easymotion/vim-easymotion'
 ""Plug 'neovim/nvim-lsp'
+Plug 'peanuttown/tzzNvimPlugin'
 
 call plug#end()
 
@@ -177,7 +182,6 @@ function! Enter()
 
 endfunction!
 hi Normal guibg=NONE ctermbg=NONE
-hi Comment guifg=Red
 ""hi Normal guibg=NONE ctermbg=NONE
 let g:go_gopls_enabled = 0
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
@@ -205,3 +209,12 @@ nnoremap <m-3> 3gt
 
 
 
+nn <m-1> 1gt
+nn <m-2> 2gt
+nn <m-3> 3gt
+nn <m-4> 4gt
+
+" emoj
+ab :pushpin: 📌
+ab :flower: 🌸
+ab :devil: 😈
