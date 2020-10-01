@@ -26,13 +26,7 @@
 			"command": "gopls",
 			"rootPatterns": ["go.mod"],
 			"filetypes": ["go"]
-		},
-                //"socketserver":{
-                //        "filetypes":["go"],
-                //        "host":"127.0.0.1",
-                //        "port":10000,
-		//	"rootPatterns": ["go.mod"]
-                //}
+		}
 	},
 	"tsserver.tsdk":"/mnt/d/tools/vscode/Microsoft VS Code/resources/app/extensions/node_modules/typescript/lib"
 }
