@@ -56,7 +56,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'joshdick/onedark.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 ""Plug 'sebdah/vim-delve'
@@ -67,6 +66,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'easymotion/vim-easymotion'
 ""Plug 'neovim/nvim-lsp'
 Plug 'peanuttown/tzzNvimPlugin'
+Plug 'liuchengxu/space-vim-theme'
 
 call plug#end()
 
@@ -192,7 +192,6 @@ inoremap <c-n> <c-x><c-n>
 inoremap <c-p> <c-x><c-p>
 
 syntax enable
-colorscheme onedark
 nnoremap -w :up<cr>
 inoremap -a <esc>A
 nnoremap <s-u> :b#<cr>
@@ -206,6 +205,7 @@ let g:coc_disable_startup_warning=1
 nnoremap <m-1> :tabfirst<CR>
 nnoremap <m-2> 2gt
 nnoremap <m-3> 3gt
+inoremap <c-s> <esc>S
 
 
 
@@ -218,3 +218,7 @@ nn <m-4> 4gt
 ab :pushpin: 📌
 ab :flower: 🌸
 ab :devil: 😈
+ab :tada: 🎉
+
+set background=light
+colorscheme space_vim_theme
