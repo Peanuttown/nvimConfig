@@ -52,7 +52,7 @@ set runtimepath +=~/.vim/tzzNvimPlugin
 " Specify a directory for plugins
 " " - For Neovim: ~/.local/share/nvim/plugged
 " " - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('~/.vim/plugged')
+call plug#begin('/data/vimplugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -64,6 +64,7 @@ Plug 'fatih/vim-go',
 Plug 'joshdick/onedark.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'easymotion/vim-easymotion'
+Plug 'Peanuttown/tzzNvimPlugin'
 ""Plug 'neovim/nvim-lsp'
 Plug 'peanuttown/tzzNvimPlugin'
 Plug 'liuchengxu/space-vim-theme'
@@ -194,6 +195,7 @@ inoremap <c-p> <c-x><c-p>
 syntax enable
 nnoremap -w :up<cr>
 inoremap -a <esc>A
+inoremap <c-s> <esc><s-s>
 nnoremap <s-u> :b#<cr>
 nnoremap -b :Buffers<cr>
 nnoremap -f :Files<cr>
@@ -202,11 +204,14 @@ nnoremap -q :q<cr>
 nmap <Leader>g <Plug>(easymotion-s2)
 let g:coc_disable_startup_warning=1
 
+
 nnoremap <m-1> :tabfirst<CR>
 nnoremap <m-2> 2gt
 nnoremap <m-3> 3gt
+nnoremap <m-4> 4gt
 inoremap <c-s> <esc>S
 
+nnoremap -ec :e %:p
 
 
 nn <m-1> 1gt
@@ -222,3 +227,4 @@ ab :tada: 🎉
 
 set background=light
 colorscheme space_vim_theme
+""let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
