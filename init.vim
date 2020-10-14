@@ -31,8 +31,8 @@ inoremap <c-j> <esc>
 inoremap ( ()<ESC>i
 inoremap [ []<ESC>i
 inoremap { {}<ESC>i
-inoremap <c-d> <right>
-inoremap <c-l> <right>
+inoremap <c-f> <right>
+inoremap <c-l> <esc>o
 inoremap <c-a> <esc>A
 inoremap <c-b> <left>
 inoremap <c-e> <esc><left>wa
@@ -52,7 +52,8 @@ set runtimepath +=~/.vim/tzzNvimPlugin
 " Specify a directory for plugins
 " " - For Neovim: ~/.local/share/nvim/plugged
 " " - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('/data/vimplugged')
+""call plug#begin('/data/vimplugged')
+call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -211,6 +212,7 @@ nnoremap <m-3> 3gt
 nnoremap <m-4> 4gt
 inoremap <c-s> <esc>S
 
+
 nnoremap -ec :e %:p
 
 
@@ -228,3 +230,9 @@ ab :tada: 🎉
 set background=light
 colorscheme space_vim_theme
 ""let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
+
+if $TERM_PROGRAM =~ "iTerm"
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+endif
+
