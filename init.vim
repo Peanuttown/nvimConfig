@@ -69,6 +69,7 @@ Plug 'Peanuttown/tzzNvimPlugin'
 ""Plug 'neovim/nvim-lsp'
 Plug 'peanuttown/tzzNvimPlugin'
 Plug 'liuchengxu/space-vim-theme'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
