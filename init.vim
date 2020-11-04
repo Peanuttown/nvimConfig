@@ -17,12 +17,15 @@ set softtabstop=4   " 退格键退回缩进空格的长度
 set shiftwidth=4    " 表示每一级缩进的长度
 set expandtab       " 设置缩进用空格来表示""""
 set autoindent
-set matchpairs+=^:$
+set matchpairs+=^:$,တ:ဈ
+set foldmethod=marker
 ""set background=dark
 highlight CursorLine guibg=Black 
 nnoremap <S-u> :exe 'cd' wxtf<CR>
 nnoremap <S-e> :NERDTreeToggle<CR>
 inoremap -n <c-\><c-n>
+inoremap -ch တ
+inoremap -yy ဈ
 noremap <Plug>(TzzTest) :echo "haha"<CR>
 nmap tzz <Plug>(TzzTest)
 "inoremap <c-o> <c-x><c-o>
@@ -234,6 +237,9 @@ ab :check: ✅
 ab :cross: ❌
 ab :end: 🔚
 ab :on: 🔛
+ab :memo: 📝
+ab :ch: တ
+ab :yy: ဈ
 
 set background=light
 colorscheme space_vim_theme
