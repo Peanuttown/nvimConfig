@@ -32,13 +32,16 @@ nmap tzz <Plug>(TzzTest)
 inoremap " ""<ESC>i
 inoremap ' ''<ESC>i
 inoremap <c-j> <esc>
-inoremap ( ()<ESC>i
+""inoremap ( ()<ESC>i
 inoremap [ []<ESC>i
 inoremap { {}<ESC>i
 inoremap <c-f> <right>
+inoremap <c-d> <right>
 inoremap <c-l> <esc>o
-inoremap <c-b> <left>
 inoremap <c-e> <esc>A
+inoremap <c-b> <left>
+inoremap <c-a> <esc>I
+inoremap <c-b> <left>
 
 nnoremap -tt :tabnew<CR>:terminal<CR>
 nnoremap -tv :vs<CR>:terminal<CR>
@@ -175,7 +178,7 @@ hi lCursor guifg=Green guibg=Black
 command! -nargs=1 TestCmd call TestEcho(<args>)
 
 
-inoremap ) <Cmd> call MoveIfLeftParenthese()<Cr>
+""inoremap ) <Cmd> call MoveIfLeftParenthese()<Cr>
 inoremap <cr> <Cmd> call TzzEnter()<Cr>
 nnoremap -nn :NERDTree<Cr>
 nnoremap -nf :NERDTreeFind<Cr>
@@ -250,4 +253,9 @@ if $TERM_PROGRAM =~ "iTerm"
     let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
 endif
 
+augroup remember_folds
+  autocmd!
+  autocmd BufWinLeave * mkview
+  autocmd BufWinEnter * silent! loadview
+augroup END
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
