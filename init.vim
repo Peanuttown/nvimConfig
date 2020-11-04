@@ -17,6 +17,7 @@ set softtabstop=4   " 退格键退回缩进空格的长度
 set shiftwidth=4    " 表示每一级缩进的长度
 set expandtab       " 设置缩进用空格来表示""""
 set autoindent
+set matchpairs+=^:$
 ""set background=dark
 highlight CursorLine guibg=Black 
 nnoremap <S-u> :exe 'cd' wxtf<CR>
@@ -37,6 +38,7 @@ inoremap <c-l> <esc>o
 inoremap <c-e> <esc>A
 inoremap <c-b> <left>
 inoremap <c-a> <esc>I
+inoremap <c-b> <left>
 
 nnoremap -tt :tabnew<CR>:terminal<CR>
 nnoremap -tv :vs<CR>:terminal<CR>
@@ -70,7 +72,8 @@ Plug 'Peanuttown/tzzNvimPlugin'
 ""Plug 'neovim/nvim-lsp'
 Plug 'peanuttown/tzzNvimPlugin'
 Plug 'liuchengxu/space-vim-theme'
-
+Plug 'tpope/vim-fugitive'
+Plug 'puremourning/vimspector'
 call plug#end()
 
 "let g:LanguageClient_autoStart = 1
@@ -227,6 +230,13 @@ ab :pushpin: 📌
 ab :flower: 🌸
 ab :devil: 😈
 ab :tada: 🎉
+ab :qiezi: 🍆
+ab :bug: 🐛
+ab :warning:⚠️
+ab :check: ✅
+ab :cross: ❌
+ab :end: 🔚
+ab :on: 🔛
 
 set background=light
 colorscheme space_vim_theme
@@ -242,3 +252,4 @@ augroup remember_folds
   autocmd BufWinLeave * mkview
   autocmd BufWinEnter * silent! loadview
 augroup END
+let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
