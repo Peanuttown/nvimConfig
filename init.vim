@@ -190,7 +190,6 @@ nnoremap -c :call TzzcdFile()<Cr>
 function! Enter()
 
 endfunction!
-hi Normal guibg=NONE ctermbg=NONE
 ""hi Normal guibg=NONE ctermbg=NONE
 let g:go_gopls_enabled = 0
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
@@ -259,3 +258,4 @@ augroup remember_folds
   autocmd BufWinEnter * silent! loadview
 augroup END
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+""hi Normal guibg=NONE ctermbg=NONE
