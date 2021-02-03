@@ -26,6 +26,8 @@ nnoremap <S-e> :NERDTreeToggle<CR>
 inoremap -n <c-\><c-n>
 inoremap -ch တ
 inoremap -yy ဈ
+
+
 noremap <Plug>(TzzTest) :echo "haha"<CR>
 nmap tzz <Plug>(TzzTest)
 "inoremap <c-o> <c-x><c-o>
@@ -60,7 +62,8 @@ set runtimepath +=~/.vim/tzzNvimPlugin
 " " - Avoid using standard Vim directory names like 'plugin'
 ""call plug#begin('/data/vimplugged')
 call plug#begin('~/.vim/plugged')
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+""Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
@@ -108,7 +111,9 @@ augroup tzz
 	au!
 	""autocmd FileType c,javascript,typescript,cpp nmap <buffer> <c-]> :w<CR><Plug>(coc-definition)
 	""""exec "autocmd FileType " . join(list,",") . " inoremap <silent><expr> <c-o> coc#refresh()" 
-	exec "autocmd FileType " . join(list,",") . " nmap <buffer> <c-]> :up<CR><Plug>(tzz_go_to_definition)" 
+	""exec "autocmd FileType " . join(list,",") . " nmap <buffer> <c-]> :up<CR><Plug>(tzz_go_to_definition)" 
+	""exec "autocmd FileType " . join(list,",") . " nmap <buffer> <c-]> <Plug>(tzz_go_to_definition)" 
+	exec "autocmd FileType " . join(list,",") . " nmap <buffer> <c-]> :call TzzJumpDefinition()<CR>" 
 	exec "autocmd FileType " . join(list,",") . " nmap <buffer> <c-n> <Plug>(tzz_go_to_next_err)" 
 	exec "autocmd FileType " . join(list,",") . " nmap <buffer> <s-f> <Plug>(coc-diagnostic-info)" 
 	exec "autocmd FileType " . join(list,",") . "  nmap <buffer> <c-h> :up<CR><Plug>(tzz_find_references)" 
@@ -127,7 +132,6 @@ if exists("g:tzz_lsp_coc")
     nmap <Plug>(tzz_go_to_next_err) <Plug>(coc-diagnostic-next)
     nmap <Plug>(tzz_find_references) <Plug>(coc-references)
 endif
-
 
 ""call tzz#RequireLua("tzzLsp.lua")
 ""lua tzz_lsp_go_setup()
@@ -242,6 +246,8 @@ ab :on: 🔛
 ab :memo: 📝
 ab :ch: တ
 ab :yy: ဈ
+ab :gittzz: github.com/Peanuttown
+ab :sp: github.com/Peanuttown/go_source_player
 
 set background=light
 colorscheme space_vim_theme
@@ -252,10 +258,12 @@ if $TERM_PROGRAM =~ "iTerm"
     let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
 endif
 
-augroup remember_folds
-  autocmd!
-  autocmd BufWinLeave * mkview
-  autocmd BufWinEnter * silent! loadview
-augroup END
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 ""hi Normal guibg=NONE ctermbg=NONE
+
+function! TzzJumpDefinition()
+    if ((&modified==1) && (len(win_findbuf(bufnr('%'))) < 2))
+        normal -vs
+    endif
+    call CocActionAsync("jumpDefinition")
+endfunction
